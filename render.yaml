@@ -1,0 +1,21 @@
+version: 1
+
+services:
+  - type: web
+    name: xct-unlimited-vps
+    env: python
+    plan: free          # غيّر إلى "starter" أو "standard" إذا أردت موارد أكثر
+    buildCommand: pip install -r requirements.txt
+    startCommand: python VeNoM.py
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12
+      - key: SERVER_PORT
+        value: 10000          # Render يستخدم دائمًا المنفذ 10000
+      - key: FLASK_ENV
+        value: production
+      # أضف متغيرات أخرى إذا لزم الأمر (مثل SECRET_KEY)
+      # - key: SECRET_KEY
+      #   generateValue: true
+      #   sync: false
